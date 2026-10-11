@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FiAlertCircle } from "react-icons/fi";
+import { formatCurrency } from "../../utils/format.js";
 import styles from "./styles.module.css";
 
 const ApplicationForm = ({ products, application, onSubmit }) => {
@@ -13,6 +14,7 @@ const ApplicationForm = ({ products, application, onSubmit }) => {
         const values = Object.fromEntries(form.entries());
         const name = values.borrower.trim();
         const email = values.email.trim();
+        const selectedProduct = selectableProducts.find((product) => product.id === values.productId);
         const amount = Number(values.amount);
         const term = Number(values.term);
         const annualIncome = Number(values.annualIncome);
@@ -27,6 +29,18 @@ const ApplicationForm = ({ products, application, onSubmit }) => {
         }
         if (amount < 500 || amount > 20000000 || term < 1 || term > 40 || annualIncome < 0) {
             setError("Check the requested amount, term, and annual income.");
+            return;
+        }
+        if (!selectedProduct) {
+            setError("Choose a loan product.");
+            return;
+        }
+        if (amount < selectedProduct.minAmount || amount > selectedProduct.maxAmount) {
+            setError("The amount for this product must be between " + formatCurrency(selectedProduct.minAmount) + " and " + formatCurrency(selectedProduct.maxAmount) + ".");
+            return;
+        }
+        if (term > selectedProduct.maxTerm) {
+            setError("The selected product supports a maximum term of " + selectedProduct.maxTerm + " years.");
             return;
         }
 
