@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FiArrowUpRight, FiBriefcase, FiGithub, FiMenu, FiX } from "react-icons/fi";
 import styles from "./styles.module.css";
 
@@ -13,12 +13,6 @@ const links = [
 const Header = () => {
     const [isHidden, setIsHidden] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    const location = useLocation();
-
-    useEffect(() => {
-        setMenuOpen(false);
-    }, [location.pathname]);
-
     useEffect(() => {
         let previousY = window.scrollY;
         const handleScroll = () => {
@@ -36,7 +30,7 @@ const Header = () => {
     return (
         <header className={`${styles.header} ${isHidden && !menuOpen ? styles.hidden : ""}`}>
             <div className={styles.inner}>
-                <NavLink aria-label="LendDesk home" className={styles.brand} to="/">
+                <NavLink aria-label="LendDesk home" className={styles.brand} onClick={() => setMenuOpen(false)} to="/">
                     <span className={styles.brandMark}><FiBriefcase aria-hidden="true" /></span>
                     <span className={styles.brandName}>lend<span>desk</span><i>.</i></span>
                 </NavLink>
@@ -47,6 +41,7 @@ const Header = () => {
                             key={link.to}
                             className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
                             end={link.end}
+                            onClick={() => setMenuOpen(false)}
                             to={link.to}
                         >
                             {link.label}
