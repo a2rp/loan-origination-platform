@@ -4,8 +4,8 @@ import styles from "./styles.module.css";
 
 const ApplicationForm = ({ products, application, onSubmit }) => {
     const [error, setError] = useState("");
-    const activeProducts = products.filter((product) => product.active);
-    const defaultProduct = activeProducts[0]?.id || "";
+    const selectableProducts = products.filter((product) => product.active || product.id === application?.productId);
+    const defaultProduct = selectableProducts[0]?.id || "";
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -64,7 +64,7 @@ const ApplicationForm = ({ products, application, onSubmit }) => {
                     <span>Loan product <i>Required</i></span>
                     <select defaultValue={application?.productId || defaultProduct} name="productId">
                         <option value="">Choose a product</option>
-                        {activeProducts.map((product) => <option key={product.id} value={product.id}>{product.name}</option>)}
+                        {selectableProducts.map((product) => <option key={product.id} value={product.id}>{product.name}{product.active ? "" : " (archived)"}</option>)}
                     </select>
                 </label>
                 <label className={styles.field}>
