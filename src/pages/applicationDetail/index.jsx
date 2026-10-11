@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FiArrowLeft, FiArrowUpRight, FiCheck, FiChevronDown, FiFileText, FiMessageSquare, FiPencil, FiShield, FiTrash2 } from "react-icons/fi";
+import { FiArrowLeft, FiArrowUpRight, FiCheck, FiChevronDown, FiEdit2, FiFileText, FiMessageSquare, FiShield, FiTrash2 } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/button/index.jsx";
 import Modal from "../../components/modal/index.jsx";
@@ -52,7 +52,7 @@ const ApplicationDetail = ({ application, onEditApplication, onDeleteApplication
                     <span aria-hidden="true" className={styles.avatar}>{getInitials(application.borrower)}</span>
                     <div><span className={styles.eyebrow}>LOAN APPLICATION / {application.id}</span><h1>{application.borrower}</h1><p>{application.product} <i>·</i> Submitted {formatDate(application.submittedAt)}</p></div>
                 </div>
-                <div className={styles.fileActions}><StatusPill status={application.status} /><Button icon={<FiPencil aria-hidden="true" />} onClick={() => onEditApplication(application)}>Edit file</Button><Button aria-label={`Delete application ${application.id}`} className={styles.deleteButton} icon={<FiTrash2 aria-hidden="true" />} onClick={() => setPendingAction({ type: "delete" })} variant="iconOnly" /></div>
+                <div className={styles.fileActions}><StatusPill status={application.status} /><Button icon={<FiEdit2 aria-hidden="true" />} onClick={() => onEditApplication(application)}>Edit file</Button><Button aria-label={`Delete application ${application.id}`} className={styles.deleteButton} icon={<FiTrash2 aria-hidden="true" />} onClick={() => setPendingAction({ type: "delete" })} variant="iconOnly" /></div>
             </section>
 
             <section aria-label="Application progress" className={styles.progressPanel}>
