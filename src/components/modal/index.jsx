@@ -5,6 +5,8 @@ import styles from "./styles.module.css";
 
 const Modal = ({ open, title, description, onClose, children, actions, size = "regular" }) => {
     const dialogRef = useRef(null);
+    const closeRef = useRef(onClose);
+    closeRef.current = onClose;
 
     useEffect(() => {
         if (!open) return undefined;
@@ -12,7 +14,7 @@ const Modal = ({ open, title, description, onClose, children, actions, size = "r
         const previousFocus = document.activeElement;
         dialogRef.current?.focus();
         const handleKeyDown = (event) => {
-            if (event.key === "Escape") onClose();
+            if (event.key === "Escape") closeRef.current();
             if (event.key !== "Tab") return;
 
             const controls = dialogRef.current?.querySelectorAll(
@@ -35,7 +37,7 @@ const Modal = ({ open, title, description, onClose, children, actions, size = "r
             document.removeEventListener("keydown", handleKeyDown);
             previousFocus?.focus?.();
         };
-    }, [open, onClose]);
+    }, [open]);
 
     if (!open) return null;
 
