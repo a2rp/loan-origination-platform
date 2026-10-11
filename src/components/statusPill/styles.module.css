@@ -1,0 +1,49 @@
+.pill {
+    display: inline-flex;
+    min-height: 28px;
+    padding: 3px 9px;
+    align-items: center;
+    color: #56524d;
+    background: #eeece7;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 650;
+    line-height: 1.2;
+    white-space: nowrap;
+
+    &.received {
+        color: #514b43;
+        background: #f0ece5;
+    }
+
+    &.document-review {
+        color: #74531e;
+        background: #fbf0d9;
+    }
+
+    &.underwriting {
+        color: #85432e;
+        background: #f8e9e2;
+    }
+
+    &.offer-sent {
+        color: #4f5e41;
+        background: #edf1e6;
+    }
+
+    &.funded {
+        color: #356042;
+        background: #e6f0e7;
+    }
+
+    &.declined {
+        color: #8c3d38;
+        background: #f8e8e5;
+    }
+
+    &.neutral {
+        color: #514b43;
+        background: #eeece7;
+    }
+}
