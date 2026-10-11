@@ -1,17 +1,21 @@
 .app {
-    display: grid;
+    display: flex;
     min-height: 100vh;
-    padding: 32px;
-    place-items: center;
+    flex-direction: column;
+    background: var(--color-background);
 
-    h1 {
-        color: var(--color-primary);
-        font-family: var(--font-serif);
-        font-size: 40px;
+    .routeContent {
+        display: flex;
+        min-height: calc(100vh - 78px);
+        padding-top: 78px;
+        flex: 1;
+        flex-direction: column;
     }
 
-    p {
-        color: var(--color-muted);
-        font-size: 16px;
+    @media (max-width: 760px) {
+        .routeContent {
+            min-height: calc(100vh - 70px);
+            padding-top: 70px;
+        }
     }
 }
