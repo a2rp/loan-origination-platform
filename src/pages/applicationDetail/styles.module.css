@@ -509,7 +509,7 @@
             background: #fff;
             border: 1px solid #c9c0b7;
             border-radius: 50%;
-            font-size: 12px;
+            font-size: 13px;
             place-items: center;
 
             &.timelineDone {

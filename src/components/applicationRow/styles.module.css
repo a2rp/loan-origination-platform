@@ -156,6 +156,12 @@
         &.compact {
             min-height: 88px;
             grid-template-columns: 36px minmax(100px, 1fr) 18px;
+
+            .status {
+                grid-column: 2;
+                grid-row: 2;
+                justify-self: start;
+            }
         }
     }
 }
