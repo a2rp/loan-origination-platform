@@ -1,0 +1,17 @@
+.app {
+    display: grid;
+    min-height: 100vh;
+    padding: 32px;
+    place-items: center;
+
+    h1 {
+        color: var(--color-primary);
+        font-family: var(--font-serif);
+        font-size: 40px;
+    }
+
+    p {
+        color: var(--color-muted);
+        font-size: 16px;
+    }
+}
