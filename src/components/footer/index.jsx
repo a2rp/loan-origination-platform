@@ -1,7 +1,6 @@
 import { FaCoffee, FaCodepen, FaFacebookF, FaGithub, FaLinkedinIn, FaPatreon, FaYoutube } from "react-icons/fa";
 import { FiGlobe, FiLifeBuoy, FiMail } from "react-icons/fi";
 import { Tooltip } from "react-tooltip";
-import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
 const links = [
@@ -22,10 +21,10 @@ const Footer = () => (
     <footer className={styles.footer}>
         <div className={styles.inner}>
             <div className={styles.identity}>
-                <Link aria-label="LendDesk home" className={styles.brand} to="/">
+                <a aria-label="Visit Ashish Ranjan's portfolio" className={styles.brand} href="https://www.ashishranjan.net" rel="noreferrer" target="_blank">
                     <img alt="" src={`${import.meta.env.BASE_URL}logo.png`} />
                     <span>lenddesk<i>.</i></span>
-                </Link>
+                </a>
                 <p>© {new Date().getFullYear()} <a href="https://www.ashishranjan.net" rel="noreferrer" target="_blank">Ashish Ranjan</a></p>
             </div>
             <nav aria-label="Social and support links" className={styles.links}>
