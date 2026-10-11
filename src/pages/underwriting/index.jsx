@@ -63,8 +63,8 @@ const Underwriting = ({ applications, onDecision }) => {
                     <label className={styles.searchBox}><FiSearch aria-hidden="true" /><span className={styles.srOnly}>Search review queue</span><input onChange={(event) => setSearch(event.target.value)} placeholder="Search applicant or file ID" value={search} /></label>
                     <div className={styles.scoreFilters}>
                         <button className={scoreFilter === "all" ? styles.filterActive : ""} onClick={() => setScoreFilter("all")} type="button">All scores</button>
-                        <button className={scoreFilter === "strong" ? styles.filterActive : ""} onClick={() => setScoreFilter("strong")} type="button">740+</button>
-                        <button className={scoreFilter === "review" ? styles.filterActive : ""} onClick={() => setScoreFilter("review")} type="button">Below 680</button>
+                        <button className={scoreFilter === "strong" ? styles.filterActive : ""} onClick={() => setScoreFilter("strong")} type="button">Score 740+</button>
+                        <button className={scoreFilter === "review" ? styles.filterActive : ""} onClick={() => setScoreFilter("review")} type="button">Score below 680</button>
                     </div>
                     <div className={styles.reviewList}>
                         {visibleCases.map((application) => (
@@ -91,7 +91,7 @@ const Underwriting = ({ applications, onDecision }) => {
                                 <div className={styles.profileTitle}><div><span className={styles.eyebrow}>BORROWER PROFILE</span><h3>Review the submitted details</h3></div><span className={styles.profileBadge}>Sample data</span></div>
                                 <div className={styles.scorePanel}>
                                     <div className={styles.scoreRing} style={{ "--score-progress": Math.min(Math.max((selected.creditScore - 300) / 550 * 100, 0), 100) + "%" }}><strong>{selected.creditScore}</strong><span>SAMPLE SCORE</span></div>
-                                    <div className={styles.scoreCopy}><strong>{selected.creditScore >= 740 ? "Strong sample profile" : selected.creditScore >= 680 ? "Mid range sample profile" : "Additional review suggested"}</strong><p>This score is demonstration data. It does not represent a bureau result or automated recommendation.</p></div>
+                                    <div className={styles.scoreCopy}><strong>Illustrative score on file</strong><p>This score is demonstration data. It does not represent a bureau result or automated recommendation.</p></div>
                                 </div>
                                 <div className={styles.incomeBar}><div><span>Annual income on file</span><strong>{formatCurrency(selected.annualIncome)}</strong></div><span className={styles.incomeTrack}><i style={{ width: Math.min(selected.annualIncome / 250000 * 100, 100) + "%" }} /></span></div>
                                 <div className={styles.documentSummary}><div><span>Supporting checklist</span><strong>{docsComplete} of {selected.documents.length} items marked complete</strong></div><Link to={"/applications/" + selected.id}>Review documents <FiArrowUpRight aria-hidden="true" /></Link></div>
