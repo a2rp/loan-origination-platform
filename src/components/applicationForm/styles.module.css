@@ -1,0 +1,113 @@
+.form {
+    display: grid;
+    gap: 15px;
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .field {
+        display: grid;
+        min-width: 0;
+        gap: 7px;
+
+        > span {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 8px;
+            color: var(--color-ink);
+            font-size: 14px;
+            font-weight: 650;
+        }
+
+        i {
+            color: var(--color-muted);
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            min-height: 45px;
+            padding: 10px 12px;
+            color: var(--color-ink);
+            background: #fff;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 160ms ease, box-shadow 160ms ease;
+
+            &:focus {
+                border-color: var(--color-primary);
+                box-shadow: 0 0 0 3px rgb(180 85 54 / 12%);
+            }
+
+            &::placeholder {
+                color: #9b958d;
+            }
+        }
+
+        textarea {
+            min-height: 88px;
+            resize: vertical;
+        }
+    }
+
+    .numberInput {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        > span {
+            position: absolute;
+            left: 12px;
+            color: var(--color-muted);
+            font-size: 15px;
+            pointer-events: none;
+        }
+
+        input {
+            padding-left: 27px;
+        }
+    }
+
+    .full {
+        grid-column: 1 / -1;
+    }
+
+    .error {
+        display: flex;
+        padding: 11px 12px;
+        align-items: center;
+        gap: 8px;
+        color: #8e3933;
+        background: #faece9;
+        border: 1px solid #efd1cb;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    .disclaimer {
+        color: var(--color-muted);
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    @media (max-width: 560px) {
+        .grid {
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .full {
+            grid-column: auto;
+        }
+    }
+}
